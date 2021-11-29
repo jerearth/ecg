@@ -23,5 +23,6 @@
     "platforms": [
       "electron"
     ]
-  }
+  },
+  "dependencies": {}
 }
