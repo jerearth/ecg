@@ -1,3 +1,9 @@
+var Highcharts = require('highcharts');
+
+require('highcharts/modules/exporting')(Highcharts);
+require('highcharts/modules/boost')(Highcharts);
+
+
 
 Highcharts.chart('container', {
 
