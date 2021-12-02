@@ -1,7 +1,8 @@
-var Highcharts = require('highcharts');
-
+const Highcharts = require('highcharts');
+const input  = require('./js/input.js');
 require('highcharts/modules/exporting')(Highcharts);
 require('highcharts/modules/boost')(Highcharts);
+
 
 
 
@@ -15,7 +16,7 @@ Highcharts.chart('container', {
         let s =  this.series[0]
         setInterval(
           function(){
-            let point = createDummyDataPoint(0)
+            let point = input.createDummyDataPoint(0)
             res = (s.data.length<=20) ? s.addPoint(point,true,false) : s.addPoint(point,true,true);
 
           }
@@ -49,7 +50,7 @@ Highcharts.chart('container', {
   },
   series: [{
     name: 'Random data',
-    data: getECGDataJS(1),
+    data: input.getECGDataJS(1),
     marker: {
       enabled: false,
     }
