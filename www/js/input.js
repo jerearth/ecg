@@ -1,3 +1,4 @@
+const { time } = require('highcharts');
 const SerialPort = require('serialport');
 const tableify = require('tableify')
 
@@ -9,6 +10,10 @@ SerialPort.parsers = {
 
 const Readline = SerialPort.parsers.Readline
 
+
+function sleep (time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
 
 module.exports =  {
 
@@ -49,11 +54,21 @@ module.exports =  {
     },
 
     createDummyDataPoint : function(offset){
-        timestamp = Date.now() + 100*offset;
-        frameType = 1;
-        value  = Math.random()*1000
+        let timestamp = Date.now() + 100*offset;
+        let frameType = 1;
+        let value  = Math.random()*1000
         return([timestamp,value])
 
+    },
+
+    addSinDataPoint : async function(series) {
+      let timestamp = Date.now();
+      let value =  Math.sin(timestamp/200)
+      const point = [timestamp,value]
+      let res = (series.data.length<=100) ? series.addPoint(point,true,false) : series.addPoint(point,true,true);
+      await sleep(25);
+      return res
     }
+
 }
 

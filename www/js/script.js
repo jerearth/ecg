@@ -12,15 +12,15 @@ Highcharts.chart('container', {
     zoomType: 'x',
     animation: false,
     events: {
-      load: function () {
+      load: async function () {
         let s =  this.series[0]
-        setInterval(
-          function(){
-            let point = input.createDummyDataPoint(0)
-            res = (s.data.length<=20) ? s.addPoint(point,true,false) : s.addPoint(point,true,true);
-
-          }
-          ,100)
+        while(true){
+          await input.addSinDataPoint(s).then((res,err) => {
+              if(err){
+                console.error(err.message)
+              }
+          })
+        }
         
       }
     }
@@ -50,7 +50,7 @@ Highcharts.chart('container', {
   },
   series: [{
     name: 'Random data',
-    data: input.getECGDataJS(1),
+    data: [],
     marker: {
       enabled: false,
     }
