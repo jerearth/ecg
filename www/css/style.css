@@ -92,3 +92,13 @@ li.menu {
 	top: 30px;
 	left: 15px;
 }
+
+table { border-collapse: collapse; }
+table, th, td { border: 1px solid black; }
+
+.centered{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}

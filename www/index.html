@@ -4,10 +4,9 @@
   <meta charset="UTF-8">
   <title>EKG JER</title>
   <link rel="stylesheet" href="css/style.css">
-  <script src="js/highcharts.js"></script>
-  <script src="js/boost.js"></script>
-  <script src="js/exporting.js"></script>
-  <script src="js/input.js"></script>
+  <!-- <script src="js/highcharts.js"></script> -->
+  <!-- <script src="js/boost.js"></script> -->
+  <!-- <script src="js/exporting.js"></script> -->
 </head>
 <body>
 <img class="logo" src="img/logo_transparent2.png" width="40">
@@ -22,15 +21,19 @@
 <div>
 <figure class="highcharts-figure">
   <div id="container"></div>
- 
+  <script  src="js/script.js"></script>
 </figure>
 
-  <script  src="js/script.js"></script>
  <br>
 <center><button class="btn-new" style="margin:10px;">začiatok merania</button>
 <button class="btn-new" style="margin:10px;">reset</button>
 <button class="btn-new" style="margin:10px;">tlačidlo</button>
 </center>
 </div>
+<div class="centered">
+    <h2>Zoznam zariadení</h2>
+</div>
+<div id="error" class="centered" style="color: red;"></div>
+<div id="ports" class="centered"></div>
 </body>
 </html>
