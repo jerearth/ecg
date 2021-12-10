@@ -57,3 +57,8 @@ Highcharts.chart('container', {
   }]
 
 });
+
+setTimeout(function listPorts() {
+  input.listSerialPorts();
+  setTimeout(listPorts, 2000);
+}, 2000);
