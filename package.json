@@ -20,6 +20,7 @@
         "electron-rebuild": "^2.3.5"
     },
     "dependencies": {
+        "d3": "^7.2.0",
         "highcharts": "^9.3.2",
         "serialport": "^9.2.0",
         "tableify": "^1.1.1"
