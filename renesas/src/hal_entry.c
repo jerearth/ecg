@@ -47,29 +47,13 @@ const usb_descriptor_t usb_descriptor =
 usb_status_t usb_event;
 usb_setup_t usb_setup;
 
-uint32_t counter = 0;
+uint32_t counter; //for simple time measure
 
 /* Banner Info */
 char p_welcome[50] =
 { "\r\n  ecg data \r\n" };
 
-/* Next steps */
-char nextsteps[USB_EP_PACKET_SIZE] =
-{ "\r\n 2. NEXT STEPS \r\n"
-  "\r\nVisit the following URLs to learn about the kit "
-  "and the RA family of MCUs, download tools "
-  "and documentation, and get support:\r\n"
-  "\r\n a) "
-KIT_NAME_MACRO
-" resources: \t"
-KIT_LANDING_URL
-"\r\n b) RA product information:  \t"
-PRODUCT_INFO_URL
-"\r\n c) RA product support forum: \t"
-PRODUCT_SUPPORT_URL
-"\r\n d) Renesas support: \t\t"
-RENESAS_SUPPORT_URL
-"\r\n\r\n Press 1 for Kit Information or 2 for Next Steps.\r\n" };
+
 
 char data[USB_EP_PACKET_SIZE] =
 { '\0' };
@@ -134,7 +118,6 @@ void hal_entry(void)
         TURN_RED_ON
         APP_ERR_TRAP(1);
     }
-    send_data_line ();
     while (true)
     {
 
@@ -163,19 +146,12 @@ void hal_entry(void)
                 }
                 break;
             }
-            case USB_STATUS_WRITE_COMPLETE:
-            {
-                send_data_line ();
-                counter++;
-                R_BSP_SoftwareDelay (5, BSP_DELAY_UNITS_MILLISECONDS);
-                break;
-            }
 
             case USB_STATUS_READ_COMPLETE:
             {
-                if(b_usb_attach)
+                if (b_usb_attach)
                 {
-                    err = R_USB_Read (&g_basic0_ctrl, g_buf, 1, (uint8_t)g_usb_class_type);
+                    err = R_USB_Read (&g_basic0_ctrl, g_buf, 1, (uint8_t) g_usb_class_type);
                 }
                 /* Handle error */
                 if (FSP_SUCCESS != err)
@@ -188,9 +164,21 @@ void hal_entry(void)
                 /* Switch case evaluation of user input */
                 switch (g_buf[0])
                 {
-                    case KIT_INFO:
+                    case START_MEASURE:
                     {
-                        send_data_line();
+                        counter = 0; // reset counter
+                        while (counter < 4294967295) //end measure before counter overflows
+                        {
+                            //send data point every 5 miliseconds
+                            send_data_line ();
+                            counter++;
+                            R_BSP_SoftwareDelay (5, BSP_DELAY_UNITS_MILLISECONDS);
+                        }
+                        break;
+                    }
+                    case CARRIAGE_RETURN:
+                    {
+                        print_to_console(p_welcome);
                         break;
                     }
 
@@ -346,7 +334,7 @@ static fsp_err_t check_for_write_complete(void)
 }
 
 /*****************************************************************************************************************
- *  @brief      Process kit information
+ *  @brief      Send CSV formatted output of measurement to serial console
  *  @param[in]  None
  *  @retval     None
  ****************************************************************************************************************/
@@ -356,7 +344,7 @@ static void send_data_line(void)
     uint16_t adc_data = 0;
     fsp_err_t err = FSP_SUCCESS;
 
-    /* Read die temperature */
+    /* Read data from ADC channel */
     err = R_ADC_Read (&g_adc_ctrl, ADC_CHANNEL_0, &adc_data);
     /* Handle error */
     if (FSP_SUCCESS != err)
@@ -370,8 +358,10 @@ static void send_data_line(void)
     /* clear kit info buffer before updating data */
     memset (data, '\0', 511);
 
-    /* appends the data from current buffer_index_count */
-    sprintf ((char*) &data[buffer_index_count], "%ld,%d \r\n", 0, adc_data);
+    /* appends the data from current buffer_index_count
+     * dataline is CSV formatted form: time,value
+     *  */
+    sprintf ((char*) &data[buffer_index_count], "%ld,%d \r\n", counter, adc_data);
 
     buffer_index_count = 0U;
 

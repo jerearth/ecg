@@ -25,7 +25,7 @@
 
 
 
-#define KIT_INFO              ('1')
+#define START_MEASURE         ('1')
 #define NEXT_STEPS            ('2')
 #define CARRIAGE_RETURN       ('\r')
 
