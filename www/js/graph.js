@@ -29,7 +29,8 @@ Highcharts.chart('container', {
 
   plotOptions: {
     line: {
-        animation: false
+        animation: false,
+        enableMouseTracking: false,
     }
   },
 
@@ -37,19 +38,16 @@ Highcharts.chart('container', {
     text: 'ECG Chart'
   },
 
-  subtitle: {
-    text: 'Using the Boost module'
-  },
 
   tooltip: {
     valueDecimals: 2
   },
 
   xAxis: {
-    type: 'datetime'
+    type: 'integer'
   },
   series: [{
-    name: 'Random data',
+    name: 'ECG Data',
     data: [],
     marker: {
       enabled: false,
@@ -58,7 +56,3 @@ Highcharts.chart('container', {
 
 });
 
-setTimeout(function listPorts() {
-  input.listSerialPorts();
-  setTimeout(listPorts, 2000);
-}, 2000);

@@ -35,6 +35,8 @@
 body {
     background: #ffffff; /* Для старых браузров */
     background: linear-gradient(to top, #e7e7e7, #ffffff);
+    height: 100vh;
+    width: 100vw;
    }
    
 ul.main_menu {
