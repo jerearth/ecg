@@ -1,8 +1,9 @@
 {
     "name": "jer-ecg",
-    "version": "1.0.0",
+    "version": "0.0.9-beta",
     "description": "Minimalistic electron app to work with DIY ecg monitor",
     "main": "main.js",
+
     "scripts": {
         "start": "electron .",
         "install": "electron-rebuild"
@@ -18,6 +19,7 @@
     "devDependencies": {
         "electron": "^13.1.6",
         "electron-rebuild": "^2.3.5"
+
     },
     "dependencies": {
         "d3": "^7.2.0",

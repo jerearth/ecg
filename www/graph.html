@@ -6,7 +6,6 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <script  src="js/home.js"></script>
 <img class="logo" src="img/logo_transparent2.png" width="40">
 <ul class="main_menu">
 <li class="menu"><a href="manual.html">Krátky manuál</a></li>
@@ -14,10 +13,17 @@
 <li class="menu"><a href="index.html">Home</a></li>
 <li class="menu"><a href="graph.html">EKG</a></li>
 </ul>
-<div class="centered">
-    <h2>Zoznam zariadení</h2>
+<br>
+<div>
+<figure class="highcharts-figure">
+  <div id="container"></div>
+  <script  src="js/graph.js"></script>
+</figure>
+
+ <br>
+<center><button class="btn-new" style="margin:10px;">začiatok merania</button>
+<button class="btn-new" style="margin:10px;">reset</button>
+<button class="btn-new" style="margin:10px;">tlačidlo</button>
+</center>
 </div>
-<div id="error" class="centered" style="color: red;"></div>
-<div id="ports" class="centered"></div>
-</body>
-</html>
+
