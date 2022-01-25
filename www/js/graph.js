@@ -5,7 +5,6 @@ require('highcharts/modules/boost')(Highcharts);
 
 
 
-
 Highcharts.chart('container', {
 
   chart: {
@@ -14,13 +13,7 @@ Highcharts.chart('container', {
     events: {
       load: async function () {
         let s =  this.series[0]
-        while(true){
-          await input.addSinDataPoint(s).then((res,err) => {
-              if(err){
-                console.error(err.message)
-              }
-          })
-        }
+        await input.startECGMeasure(s)
         
       }
     }
@@ -47,7 +40,8 @@ Highcharts.chart('container', {
     type: 'integer'
   },
   series: [{
-    name: 'ECG Data',
+    name: 'ECG',
+    color: 'red',
     data: [],
     marker: {
       enabled: false,
@@ -55,4 +49,6 @@ Highcharts.chart('container', {
   }]
 
 });
+
+// window.onclose = input.closePort()
 

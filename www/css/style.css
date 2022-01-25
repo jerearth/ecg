@@ -104,3 +104,14 @@ table, th, td { border: 1px solid black; }
   align-items: center;
   justify-content: center;
 }
+
+.port{
+  display: flex;
+  width: 80%;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.port:hover{
+  background-color: #b3b3b3;
+}

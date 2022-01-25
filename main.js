@@ -16,6 +16,7 @@ function createWindow() {
     mainWindow = new BrowserWindow({
         width: 1400,
         height: 600,
+        icon: './www/img/logo_transparent2.png',
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false, // workaround to allow use with Electron 12+
@@ -31,7 +32,7 @@ function createWindow() {
     }))
 
     // Open the DevTools.
-    mainWindow.webContents.openDevTools()
+    // mainWindow.webContents.openDevTools()
 
     // Emitted when the window is closed.
     mainWindow.on('closed', function() {
