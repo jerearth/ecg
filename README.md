@@ -7,7 +7,7 @@ KPI mentor : Ing. Eugen Šlapak, PhD.
 ```
 ## Čo to je?
 ```
- Univerzálne, prenosné, nenáročné, zachraňujúce, jednoduché EKG. 
+Univerzálne, prenosné, nenáročné, zachraňujúce, jednoduché EKG. 
 Veľmi jednoduché : len 3 elektródy na tele, malý prístroj a ľahko použiteľná
 aplikácia.
 ```
@@ -15,10 +15,9 @@ aplikácia.
 
 ## Návod na použitie:
 ```
- pomocou elektród na tele pacienta meria elektrickú aktivitu
-srdca.
+Pomocou elektród na tele pacienta meria elektrickú aktivitu srdca.
 ```
-[Poster](../blob/main/poster.pdf)
+[Poster](../main/poster.pdf)
 
 [Prezentačné video](https://youtu.be/bAAg9VQYv84  "Prezentačné video")
 
