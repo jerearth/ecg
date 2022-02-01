@@ -1,0 +1,87 @@
+html {
+    height: 100%;
+}
+
+
+body {
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+	background-image: linear-gradient(to bottom, white, #E4E4E4);
+}
+
+h1 {
+	padding: 20px;
+}
+
+#logo {
+	position: fixed;
+	top: 10px;
+	left: 30px;
+}
+
+.left {
+	width: 60%;
+	float: left;
+	margin-left: 40px;
+}
+
+.right {
+	width: 30%;
+	float: right;
+	margin-right: 40px;
+}
+
+#poster {
+	box-shadow: 4px 4px 6px gray;
+}
+
+p {
+	font-family: Helvetica;
+	font-size: 20px;
+	text-align: left;
+	line-height: 40px;
+}
+
+a:link {
+  color: Grey;
+  text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+  color: MidnightBlue;
+  text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+  color: hotpink;
+  text-decoration: none;
+}
+
+/* selected link */
+a:active {
+  color: MidnightBlue;
+  text-decoration: none;
+}
+
+.btn-new {
+    border-radius: 10px;
+    color: white;
+    transition: .2s linear;
+    background: #808080;
+	background-color: #808080; /* Green */
+	  border: none;
+	  color: white;
+	  padding: 15px 32px;
+	  text-align: center;
+	  text-decoration: none;
+	  display: inline-block;
+	  font-size: 16px;
+	  
+}
+
+.btn-new:hover {
+    box-shadow: 0 0 0 2px white, 0 0 0 4px #808080;
